@@ -1,9 +1,26 @@
 import java.util.ArrayList;
 
+/*
+    - grid <key, value> = <no, place>
+    -Grid contains places of all no and the blank square.
+    -Keys (which represent numbers) start from the lsb.
+    -The least significant byte represents the place of the blank square.
+    -The next byte represents 1's place and so on.
+    -ex: (876543210)_16 represents the goal ordered grid.
+    -ex: the grid:
+        3 6 5
+        2 _ 4
+        7 8 1
+        is represented as (761250384)_16.
+    -Grid places indices:
+    0 1 2
+    3 4 5
+    6 7 8
+    */
 public class Grid {
     private Long grid;
 
-    private final int[] DIR = {-3,3,-1,1};
+    private final int[] DIR = {1,-1,3,-3}; //<---
 
     public static final long GOAL = 0x876543210L;
     public Grid(Long grid){this.grid = grid;}
@@ -19,7 +36,7 @@ public class Grid {
     private int getNumberAtSquare(int squareNumber){
         int i = 0;
         Long g = this.grid;
-        while(g != 0){
+        while(i<9){
             if((g & 0x000FL) == squareNumber) return i;
             g = g >> 4;
             i++;
@@ -56,8 +73,8 @@ public class Grid {
     }
 
     //goal test
-    public static boolean isGoal(Long g){
-        return g == 0x876543210L;
+    public boolean isGoal(){
+        return this.grid == 0x876543210L;
     }
 
     private Grid nextState(int dir){
