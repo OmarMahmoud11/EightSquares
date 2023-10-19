@@ -34,7 +34,7 @@ public class Main {
             //long grid = charArrayToGrid(readGrid(scanner));
             Grid grid = Grid.fromCharArray(readGrid(scanner));
             System.out.println("you entered: "+grid);
-            
+
             DFS MyDFS = new DFS(grid);
             MyDFS.DisplayDFS();
             MyDFS.DisplayPath();
