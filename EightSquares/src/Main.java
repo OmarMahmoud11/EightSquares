@@ -124,18 +124,18 @@ public class Main {
         }
     }
 
-    public static void dfs(HashSet<Long> explored, Grid curr, HashMap<Grid, Grid> parents){
-        explored.add(curr.get());
+    // public static void dfs(HashSet<Long> explored, Grid curr, HashMap<Grid, Grid> parents){
+    //     explored.add(curr.get());
 
-        if(Grid.isGoal(curr.get())){return;}
+    //     if(Grid.isGoal(curr.get())){return;}
 
-        for(Grid next: curr.getNextStates()){
-            if(!explored.contains(next.get())){
-                parents.put(next, curr);
-                dfs(explored, next, parents);
-            }
-        }
-    }
+    //     for(Grid next: curr.getNextStates()){
+    //         if(!explored.contains(next.get())){
+    //             parents.put(next, curr);
+    //             dfs(explored, next, parents);
+    //         }
+    //     }
+    // }
 
     public static void printPath(HashMap<Grid, Grid> parents){
 //        long curr = Grid.GOAL;

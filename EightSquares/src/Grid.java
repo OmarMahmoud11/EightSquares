@@ -19,7 +19,7 @@ public class Grid {
     private int getNumberAtSquare(int squareNumber){
         int i = 0;
         Long g = this.grid;
-        while(g != 0){
+        while(i < 9){
             if((g & 0x000FL) == squareNumber) return i;
             g = g >> 4;
             i++;
@@ -56,8 +56,8 @@ public class Grid {
     }
 
     //goal test
-    public static boolean isGoal(Long g){
-        return g == 0x876543210L;
+    public boolean isGoal(){
+        return this.grid == 0x876543210L;
     }
 
     private Grid nextState(int dir){
