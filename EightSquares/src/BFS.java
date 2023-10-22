@@ -6,7 +6,7 @@ public class BFS {
     private HashMap<Long,Long> parentSet;
     private Grid startState ;
     private HashMap<Long,Integer> nodeDepth;
-    private ArrayList<Grid> Path;
+    public ArrayList<Grid> Path;
     private boolean success;
     private int maxDepth;
     public BFS(Grid state){

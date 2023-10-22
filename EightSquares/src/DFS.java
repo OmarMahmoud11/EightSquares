@@ -10,7 +10,7 @@ public class DFS {
     private HashMap<Long,Long> Parents;
     private HashMap<Long , Integer> NodesDepth;
     private Grid StartState;
-    private ArrayList<Grid> Path;
+    public ArrayList<Grid> Path;
     private boolean success;
     private int maxDepth;
 
@@ -49,7 +49,7 @@ public class DFS {
         }
         System.out.println("Failer");
     }
-    private void GetPath(){
+    public void GetPath(){
         if(!success){
             System.out.println("There is No Path!");
             return;
