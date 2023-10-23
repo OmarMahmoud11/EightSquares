@@ -99,6 +99,7 @@ public class Main {
                 DFS MyDFS = new DFS(grid);
                 MyDFS.DisplayDFS();
                 MyDFS.GetPath();
+                MyDFS.DisplayPath();
                 Path = MyDFS.Path;
                 System.out.println("To display the path enter y OR any other character to get other options:");
                 char c = scanner.next().charAt(0);
