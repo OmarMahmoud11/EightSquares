@@ -32,6 +32,7 @@ public class DFS {
         NodesDepth.put(StartState.get(),0);
         while (!fronteir.isEmpty()) {
             Grid cur = new Grid(fronteir.pop());
+            maxDepth = Math.max(maxDepth,NodesDepth.get(cur.get()));
             explored.add(cur.get());
             if (cur.isGoal()) {
                 System.out.println("Success");
@@ -43,7 +44,6 @@ public class DFS {
                     fronteir.push(next.get());
                     Parents.put(next.get(), cur.get());
                     NodesDepth.put(next.get(),NodesDepth.get(cur.get())+1);
-                    maxDepth = Math.max(maxDepth,NodesDepth.get(next.get()));
                 }
             }
         }
@@ -64,7 +64,6 @@ public class DFS {
     }
 
     public void DisplayPath(){
-        GetPath();
         try {
             FileWriter fileWriter = new FileWriter("output.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);

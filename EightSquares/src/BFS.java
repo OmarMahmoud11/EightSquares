@@ -26,6 +26,7 @@ public class BFS {
         nodeDepth.put(startState.get(),0);
         while(!frontier.isEmpty()){
             Grid current = new Grid(frontier.poll());
+            maxDepth = Math.max(maxDepth,nodeDepth.get(current.get()));
             visited.add(current.get());
             if(current.isGoal()){
                 System.out.println("success");
@@ -36,7 +37,6 @@ public class BFS {
                 frontier.add(nextState.get());
                 parentSet.put(nextState.get(), current.get());
                 nodeDepth.put(nextState.get(),nodeDepth.get(current.get())+1);
-                maxDepth = Math.max(maxDepth,nodeDepth.get(nextState.get()));
             }
         }
         System.out.println("failed");
@@ -48,7 +48,6 @@ public class BFS {
             System.out.println("There is No Path!");
             return;
         }
-        Stack<Grid> parentPath = new Stack<>();
         long curr = 0x876543210L;
         Path.add(new Grid(curr));
         while(parentSet.get(curr) != null){
@@ -74,7 +73,6 @@ public class BFS {
     //     }
     // }
     public void DisplayPath(){
-        GetPath();
         try {
             FileWriter fileWriter = new FileWriter("output.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -107,7 +105,7 @@ public class BFS {
 
     public static void main(String[] args) {
         Long x = 0x876543210L;
-        Grid firststate = new Grid(0x876542103L);
+        Grid firststate = new Grid(0x876432105L);
         
         char[][] c = firststate.toCharArray();;
         for (int i = 0; i < c.length; i++) {
@@ -120,7 +118,7 @@ public class BFS {
         BFS bss = new BFS(firststate);
 
         bss.excute();
-
+        bss.GetPath();
         bss.DisplayPath();
         bss.Cost();
         bss.NodesExpanded();

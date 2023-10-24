@@ -43,7 +43,6 @@ public class Grid {
         }
         return -1;
     }
-
     private Long swapNumbers(int numA, int numB){
         if(numA > numB) return swapNumbers(numB, numA);
 
@@ -111,6 +110,27 @@ public class Grid {
             }
         }
         return new Grid(grid);
+    }
+
+    public double heuristic(Boolean manhattan){
+        long window = 0X0FL;
+        long x = this.grid>>4;
+        double sum = 0.0;
+        for (int i=1;i<=8;i++){
+            int row1 = i/3;
+            int col1 = i%3;
+            int z = (int) (x & window);
+            int row2 = z/3;
+            int col2 = z%3;
+            if (manhattan){
+                sum+= Math.abs(row2-row1) + Math.abs(col2-col1);
+            }
+            else {
+                sum+= Math.sqrt((row2-row1)*(row2-row1) + (col2-col1)*(col2-col1));
+            }
+            x= x>>4;
+        }
+        return sum;
     }
 
     public String toString(){
