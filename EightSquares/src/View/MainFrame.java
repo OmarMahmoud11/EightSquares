@@ -217,7 +217,7 @@ public class MainFrame extends JFrame{
 
 
     public MainFrame(){
-        this.setTitle("GUI Tutorial");
+        this.setTitle("AI Search");
         this.setSize(600, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -305,7 +305,8 @@ public class MainFrame extends JFrame{
 
             msg += "Number of expanded nodes: "+
                     algo.NodesExpanded()+"\n"+
-                    "Time elapsed: "+algo.RunningTime();
+                    "Time elapsed: "+algo.RunningTime()+"\n"+
+                    "Search depth: "+algo.SearchDepth();
 
             JOptionPane.showMessageDialog(null, msg);
 
@@ -337,7 +338,8 @@ public class MainFrame extends JFrame{
 
             msg += "Number of expanded nodes: "+
                     algo.NodesExpanded()+"\n"+
-                    "Time elapsed: "+algo.RunningTime();
+                    "Time elapsed: "+algo.RunningTime()+"\n"+
+                    "Search depth: "+algo.SearchDepth();
 
             JOptionPane.showMessageDialog(null, msg);
 
@@ -355,7 +357,7 @@ public class MainFrame extends JFrame{
             AbstractAlgorithmFactoryInterface algoFactory;
             algoFactory = new AstarFactory(
                     Grid.fromCharArray(this.startState),
-                    false);
+                    true);
             AlgorithmInterface algo = algoFactory.CreateAlgorithm();
             algo.DisplayAlgorithm();
             algo.GetPath();
@@ -371,7 +373,8 @@ public class MainFrame extends JFrame{
 
             msg += "Number of expanded nodes: "+
                     algo.NodesExpanded()+"\n"+
-                    "Time elapsed: "+algo.RunningTime();
+                    "Time elapsed: "+algo.RunningTime()+"\n"+
+            "Search depth: "+algo.SearchDepth();
 
             JOptionPane.showMessageDialog(null, msg);
 
@@ -388,7 +391,7 @@ public class MainFrame extends JFrame{
             AbstractAlgorithmFactoryInterface algoFactory;
             algoFactory = new AstarFactory(
                     Grid.fromCharArray(this.startState),
-                    true);
+                    false);
             AlgorithmInterface algo = algoFactory.CreateAlgorithm();
             algo.DisplayAlgorithm();
             algo.GetPath();
@@ -405,7 +408,8 @@ public class MainFrame extends JFrame{
 
             msg += "Number of expanded nodes: "+
                     algo.NodesExpanded()+"\n"+
-                    "Time elapsed: "+algo.RunningTime();
+                    "Time elapsed: "+algo.RunningTime()+"\n"+
+                    "Search depth: "+algo.SearchDepth();
 
             JOptionPane.showMessageDialog(null, msg);
 
