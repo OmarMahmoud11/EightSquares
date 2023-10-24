@@ -294,7 +294,7 @@ public class MainFrame extends JFrame{
             resetWindow();
 
             //must be called first
-            algo.DisplayPath();
+            algo.GetPath();
             String msg = "";
             if(!algo.IsThereAPath()){
                 msg += "This grid is unsolvable!\n";
@@ -324,7 +324,7 @@ public class MainFrame extends JFrame{
             algoFactory = new DFSFactory(Grid.fromCharArray(this.startState));
             AlgorithmInterface algo = algoFactory.CreateAlgorithm();
             algo.DisplayAlgorithm();
-            algo.DisplayPath();
+            algo.GetPath();
             resetWindow();
 
             String msg = "";
@@ -358,7 +358,7 @@ public class MainFrame extends JFrame{
                     false);
             AlgorithmInterface algo = algoFactory.CreateAlgorithm();
             algo.DisplayAlgorithm();
-            algo.DisplayPath();
+            algo.GetPath();
             resetWindow();
 
             String msg = "";
@@ -391,7 +391,7 @@ public class MainFrame extends JFrame{
                     true);
             AlgorithmInterface algo = algoFactory.CreateAlgorithm();
             algo.DisplayAlgorithm();
-            algo.DisplayPath();
+            algo.GetPath();
             resetWindow();
 
 

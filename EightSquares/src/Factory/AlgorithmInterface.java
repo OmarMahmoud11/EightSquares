@@ -12,6 +12,7 @@ public interface AlgorithmInterface {
     int SearchDepth();
     long RunningTime();
     boolean IsThereAPath();
+    void GetPath();
 
     ArrayList<Grid> Path();
 }

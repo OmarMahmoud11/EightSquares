@@ -128,6 +128,7 @@ public class Main {
             }
             else{
                 System.out.println("Success !");
+                algorithm.GetPath();
                 while (true) {
                     System.out.println("Choose the number of the operations:");
                     System.out.println("1. Path To Goal");

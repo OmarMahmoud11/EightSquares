@@ -52,6 +52,7 @@ public class BFS implements AlgorithmInterface {
         runningtime = endTime - startTime;
     }
 
+    @Override
     public void GetPath(){
         if(!success){
             return;
@@ -68,7 +69,6 @@ public class BFS implements AlgorithmInterface {
 
     @Override
     public void DisplayPath(){
-        GetPath();
         if(!success)
             return;
         try {

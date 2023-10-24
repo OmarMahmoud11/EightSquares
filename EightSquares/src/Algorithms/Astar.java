@@ -138,6 +138,8 @@ public class Astar implements AlgorithmInterface {
         long endTime   = System.nanoTime();
         runningtime = endTime - startTime;
     }
+
+    @Override
     public void GetPath(){
         if(!success){
             return;
@@ -155,7 +157,6 @@ public class Astar implements AlgorithmInterface {
 
     @Override
     public void DisplayPath(){
-        GetPath();
         if(!success){
             return;
         }

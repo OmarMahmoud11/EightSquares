@@ -58,6 +58,8 @@ public class DFS implements AlgorithmInterface {
         long endTime   = System.nanoTime();
         runningtime = endTime - startTime;
     }
+
+    @Override
     public void GetPath(){
         if(!success){
             return;
@@ -73,7 +75,6 @@ public class DFS implements AlgorithmInterface {
 
     @Override
     public void DisplayPath(){
-        GetPath();
         if(!success){
             return;
         }
