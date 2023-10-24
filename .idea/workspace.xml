@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2a363d7-16ea-414f-affa-cb4ec6442641" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EightSquares/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/EightSquares/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridTest[1].txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Lab-1/DFS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Lab-1/DFS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Lab-1/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Lab-1/Grid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Lab-1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Lab-1/Main.class" afterDir="false" />
-    </list>
+    <list default="true" id="e2a363d7-16ea-414f-affa-cb4ec6442641" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,6 +18,9 @@
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2WwuxSq1P0ZUwA9OwH35iNM5TZO" />
   <component name="ProjectViewState">
@@ -33,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "D:/Level 3 (Semster 1)/AI/Labs/Lab-1/EightSquares",
+    "last_opened_file_path": "D:/JavaProjects/8Squares/EightSquares/EightSquares",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
