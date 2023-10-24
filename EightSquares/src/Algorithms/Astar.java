@@ -1,8 +1,12 @@
+package Algorithms;
+
+import Factory.AlgorithmInterface;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-public class Astar {
+public class Astar implements AlgorithmInterface {
 
     class parentPair{
         long parent;
@@ -79,6 +83,7 @@ public class Astar {
     private boolean heuristic;
 
     private HashSet<Long> inFrontier ;
+    private long runningtime;
 
     public Astar(Grid startGrid,boolean heuristic) {
         this.frontier = new PriorityQueue<>();
@@ -90,10 +95,12 @@ public class Astar {
         this.Path = new ArrayList<>();
         this.inFrontier = new HashSet<>();
         this.heuristic = heuristic;
+        runningtime=0;
     }
 
-
-    public void excute(){
+    @Override
+    public void DisplayAlgorithm(){
+        long startTime = System.nanoTime();
         frontier.add(new FrontierPair(startGrid.get(),0.0));
         inFrontier.add(startGrid.get());
         parentSet.put(startGrid.get(),new parentPair(startGrid.get(), 0));
@@ -107,8 +114,9 @@ public class Astar {
             if(visited.contains(currentGrid.get())){continue;}
             visited.add(currentGrid.get());
             if(currentGrid.isGoal()){
-                System.out.println("success");
                 this.success = true;
+                long endTime   = System.nanoTime();
+                runningtime = endTime - startTime;
                 return;
             }
             for (Grid nextState : currentGrid.getNextStates()) {
@@ -126,10 +134,12 @@ public class Astar {
                 }
             }
         }
+        this.success = false;
+        long endTime   = System.nanoTime();
+        runningtime = endTime - startTime;
     }
     public void GetPath(){
         if(!success){
-            System.out.println("There is No Path!");
             return;
         }
         Grid curr = new Grid(Grid.GOAL);
@@ -142,8 +152,13 @@ public class Astar {
         Path.add(curr);
         Collections.reverse(Path);
     }
+
+    @Override
     public void DisplayPath(){
         GetPath();
+        if(!success){
+            return;
+        }
         try {
             FileWriter fileWriter = new FileWriter("output.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -162,25 +177,34 @@ public class Astar {
         }
     }
 
-    public void Cost(){
+    @Override
+    public int Cost(){
         int c = Path.size()-1;
-        System.out.println("the cost of the path in A*: "+c);
+        return c;
     }
 
-    public void NodesExpanded(){
-        System.out.println("the Nodes Expanded in A* : "+visited.size());
+    @Override
+    public int NodesExpanded(){
+        return visited.size();
     }
 
-    public void Depth(){
-        System.out.println("the depth in A* : "+maxDepth);
+    @Override
+    public int SearchDepth(){
+        return maxDepth;
     }
 
-    public static void main(String[] args) {
-        Grid firststate = new Grid(0x876432105L);
-        Astar astar = new Astar(firststate,true);
-        astar.excute();
-        astar.DisplayPath();
-        System.out.println(astar.visited.size());
-        System.out.println("finished");
+    @Override
+    public long RunningTime(){
+        return runningtime;
+    }
+
+    @Override
+    public boolean IsThereAPath(){
+        return success;
+    }
+
+    @Override
+    public ArrayList<Grid> Path(){
+        return Path;
     }
 }

@@ -1,10 +1,13 @@
-import java.io.File;
+package Algorithms;
+
+import Factory.AlgorithmInterface;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class DFS {
+public class DFS implements AlgorithmInterface {
     private Stack<Long> fronteir;
     private HashSet<Long> explored;
     private HashMap<Long,Long> Parents;
@@ -13,6 +16,7 @@ public class DFS {
     public ArrayList<Grid> Path;
     private boolean success;
     private int maxDepth;
+    private long runningtime;
 
 
     public DFS(Grid start_State){
@@ -24,9 +28,12 @@ public class DFS {
         Path = new ArrayList<Grid>();
         success = false;
         maxDepth=0;
+        runningtime=0;
     }
 
-    public void DisplayDFS(){
+    @Override
+    public void DisplayAlgorithm(){
+        long startTime = System.nanoTime();
         fronteir.push(StartState.get());
         Parents.put(StartState.get(),StartState.get());
         NodesDepth.put(StartState.get(),0);
@@ -35,8 +42,9 @@ public class DFS {
             maxDepth = Math.max(maxDepth,NodesDepth.get(cur.get()));
             explored.add(cur.get());
             if (cur.isGoal()) {
-                System.out.println("Success");
                 success = true;
+                long endTime   = System.nanoTime();
+                runningtime = endTime - startTime;
                 return;
             }
             for (Grid next : cur.getNextStates()) {
@@ -47,11 +55,11 @@ public class DFS {
                 }
             }
         }
-        System.out.println("Failer");
+        long endTime   = System.nanoTime();
+        runningtime = endTime - startTime;
     }
     public void GetPath(){
         if(!success){
-            System.out.println("There is No Path!");
             return;
         }
         Grid curr = new Grid(Grid.GOAL);
@@ -63,7 +71,12 @@ public class DFS {
         Collections.reverse(Path);
     }
 
+    @Override
     public void DisplayPath(){
+        GetPath();
+        if(!success){
+            return;
+        }
         try {
             FileWriter fileWriter = new FileWriter("output.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -81,14 +94,35 @@ public class DFS {
             throw new RuntimeException(e);
         }
     }
-    public void Cost(){
+
+    @Override
+    public int Cost(){
         int c = Path.size()-1;
-        System.out.println("the cost of the path in DFS: "+c);
+       return c;
     }
-    public void NodesExpanded(){
-        System.out.println("the Nodes Expanded in DFS: "+explored.size());
+
+    @Override
+    public int NodesExpanded(){
+        return explored.size();
     }
-    public void Depth(){
-        System.out.println("the depth in DFS : "+maxDepth);
+
+    @Override
+    public int SearchDepth(){
+        return maxDepth;
+    }
+
+    @Override
+    public long RunningTime(){
+        return runningtime;
+    }
+
+    @Override
+    public boolean IsThereAPath(){
+        return success;
+    }
+
+    @Override
+    public ArrayList<Grid> Path(){
+        return Path;
     }
 }

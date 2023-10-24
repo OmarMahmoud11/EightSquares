@@ -1,8 +1,10 @@
+package Algorithms;
+
 import java.util.ArrayList;
 
 /*
     - grid <key, value> = <no, place>
-    -Grid contains places of all no and the blank square.
+    -Algorithms.Grid contains places of all no and the blank square.
     -Keys (which represent numbers) start from the lsb.
     -The least significant byte represents the place of the blank square.
     -The next byte represents 1's place and so on.
@@ -12,7 +14,7 @@ import java.util.ArrayList;
         2 _ 4
         7 8 1
         is represented as (761250384)_16.
-    -Grid places indices:
+    -Algorithms.Grid places indices:
     0 1 2
     3 4 5
     6 7 8

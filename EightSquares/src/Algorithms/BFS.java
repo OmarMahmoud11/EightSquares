@@ -1,6 +1,10 @@
+package Algorithms;
+
+import Factory.AlgorithmInterface;
+
 import java.io.*;
 import java.util.*;
-public class BFS {
+public class BFS implements AlgorithmInterface {
     private Queue<Long> frontier;
     private HashSet<Long> visited;
     private HashMap<Long,Long> parentSet;
@@ -9,6 +13,7 @@ public class BFS {
     public ArrayList<Grid> Path;
     private boolean success;
     private int maxDepth;
+    private long runningtime;
     public BFS(Grid state){
         frontier = new LinkedList<>();
         visited = new HashSet<>();
@@ -18,9 +23,11 @@ public class BFS {
         Path = new ArrayList<>();
         success = false;
         maxDepth = 0;
+        runningtime=0;
     }
-
-    public void excute(){
+    @Override
+    public void DisplayAlgorithm(){
+        long startTime = System.nanoTime();
         frontier.add(startState.get());
         parentSet.put(startState.get(), null);
         nodeDepth.put(startState.get(),0);
@@ -29,8 +36,9 @@ public class BFS {
             maxDepth = Math.max(maxDepth,nodeDepth.get(current.get()));
             visited.add(current.get());
             if(current.isGoal()){
-                System.out.println("success");
                 this.success = true;
+                long endTime   = System.nanoTime();
+                runningtime = endTime - startTime;
                 return;}
             for (Grid nextState : current.getNextStates()) {
                 if(visited.contains(nextState.get()) || parentSet.containsKey(nextState.get())){continue;}
@@ -39,13 +47,13 @@ public class BFS {
                 nodeDepth.put(nextState.get(),nodeDepth.get(current.get())+1);
             }
         }
-        System.out.println("failed");
         this.success = false;
+        long endTime   = System.nanoTime();
+        runningtime = endTime - startTime;
     }
 
     public void GetPath(){
         if(!success){
-            System.out.println("There is No Path!");
             return;
         }
         long curr = 0x876543210L;
@@ -58,21 +66,11 @@ public class BFS {
         Collections.reverse(Path);
     }
 
-    // public void printStack(Stack<Grid> parentPath){
-    //     while(!parentPath.empty()){
-    //         Grid x = parentPath.pop();
-    //         char[][] c = x.toCharArray();
-    //         for (int i = 0; i < c.length; i++) {
-    //             for (int j = 0; j < c[0].length; j++) {
-    //                 System.out.print(c[i][j]+" ");
-    //             }
-    //             System.out.println();
-    //         }
-    //         System.out.println("=========================");
-
-    //     }
-    // }
+    @Override
     public void DisplayPath(){
+        GetPath();
+        if(!success)
+            return;
         try {
             FileWriter fileWriter = new FileWriter("output.txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -91,38 +89,34 @@ public class BFS {
         }
     }
 
-    public void Cost(){
+    @Override
+    public int Cost(){
         int c = Path.size()-1;
-        System.out.println("the cost of the path in BFS: "+c);
-    }
-    public void NodesExpanded(){
-        System.out.println("the Nodes Expanded in BFS: "+visited.size());
-    }
-    public void Depth(){
-        System.out.println("the depth in BFS : "+maxDepth);
+        return c;
     }
 
+    @Override
+    public int NodesExpanded(){
+        return visited.size();
+    }
 
-    public static void main(String[] args) {
-        Long x = 0x876543210L;
-        Grid firststate = new Grid(0x876432105L);
-        
-        char[][] c = firststate.toCharArray();;
-        for (int i = 0; i < c.length; i++) {
-            for (int j = 0; j < c[0].length; j++) {
-                System.out.print(c[i][j]+" ");
-            }
-            System.out.println();
-        }
-        
-        BFS bss = new BFS(firststate);
+    @Override
+    public int SearchDepth(){
+        return maxDepth;
+    }
 
-        bss.excute();
-        bss.GetPath();
-        bss.DisplayPath();
-        bss.Cost();
-        bss.NodesExpanded();
-        bss.Depth();
+    @Override
+    public long RunningTime(){
+        return runningtime;
+    }
+    @Override
+    public boolean IsThereAPath(){
+        return success;
+    }
+
+    @Override
+    public ArrayList<Grid> Path(){
+        return Path;
     }
 }
     
