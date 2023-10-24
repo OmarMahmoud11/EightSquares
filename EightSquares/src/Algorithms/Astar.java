@@ -82,7 +82,7 @@ public class Astar implements AlgorithmInterface {
 
     private boolean heuristic;
 
-    private HashSet<Long> inFrontier ;
+    private HashSet<Long> inFrontier;
     private long runningtime;
 
     public Astar(Grid startGrid,boolean heuristic) {
