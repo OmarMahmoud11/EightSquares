@@ -63,7 +63,7 @@ public class DFS implements AlgorithmInterface {
             return;
         }
         Grid curr = new Grid(Grid.GOAL);
-        while(curr.get() != StartState.get()){
+        while(!curr.get().equals(StartState.get())){
             Path.add(curr);
             curr = new Grid(Parents.get(curr.get()));
         }
